@@ -1,0 +1,29 @@
+{
+    "name": "qchainphp/qchain-api",
+    "description": "A PHP API for interacting with QChain",
+    "license": "MIT",
+    "type":   "library",
+    "keywords": [
+        "qchainphp",
+        "qchain-php",
+        "qchain-api"
+    ],
+
+    "require": {
+        "php": "^7.2",
+        "guzzlehttp/guzzle": "^7.3"
+    },
+	
+    "autoload": {
+        "psr-4": {
+            "QchainPHP\\QchainAPI\\": "src"
+        }
+    },
+
+    "config": {
+        "sort-packages": true
+    },
+
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
