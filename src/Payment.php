@@ -21,7 +21,7 @@ class Payment extends Client
 	public static function get($contractAlias, $index = 0)
 	{
 		$payments = [];
-		$paymentsList = self::getClient()->qdt()->contract(['limit' => $contractAlias . '/pay', 'index' => $index]);
+		$paymentsList = self::getClient()->request()->contract(['limit' => $contractAlias . '/pay', 'index' => $index]);
 		foreach($paymentsList['payments'] AS $payment) {
 			$payments[($payment['payment'])] = new self($payment);
 		}

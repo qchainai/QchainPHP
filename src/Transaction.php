@@ -38,7 +38,7 @@ class Transaction extends Client
 		$transactions = [];
 		$page = floor($offset / $limit) + 1;
 		$count = $limit;
-		$transactionsData = self::getClient()->qdt()->transactions(['count' => $count, 'page' => $page]);
+		$transactionsData = self::getClient()->transactions(['count' => $count, 'page' => $page]);
 		if( ! isset($transactionsData['transactions'])) return [];
 		usort($transactionsData['transactions'], function($a, $b) {
 			return -($a['txid'] <=> $b['txid']);
@@ -52,6 +52,6 @@ class Transaction extends Client
 	
 	public static function findByHash($hash)
 	{
-		return new self(self::getClient()->qdt()->transaction(['txhash' => $hash]));
+		return new self(self::getClient()->transaction(['txhash' => $hash]));
 	}
 }

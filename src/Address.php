@@ -27,13 +27,13 @@ class Address extends Client
 
 	public static function findById($id, $token = null, $offset = 0, $limit = 0)
 	{
-		$accountsData = self::getClient()->qdt()->account(['limit' => $id, 'type' => 'balance']);
+		$accountsData = self::getClient()->account(['limit' => $id, 'type' => 'balance']);
 		return self::find($id, $accountsData, $token, $offset, $limit);
 	}
 
 	public static function findByHash($hash, $token = null, $offset = 0, $limit = 0)
 	{
-		$accountsData = self::getClient()->qdt()->account(['type' => 'balance']);
+		$accountsData = self::getClient()->account(['type' => 'balance']);
 		return self::find($hash, $accountsData, $token, $offset, $limit);
 	}
 	
@@ -84,7 +84,7 @@ class Address extends Client
 		$accounts = [];
 		$tokens = [];
 		
-		$accountsData = self::getClient()->qdt()->account([
+		$accountsData = self::getClient()->account([
 			'limit' => $this->account,
 			'type' => 'transactions',
 			'token' => $token,

@@ -30,7 +30,7 @@ class Qdt
 		return $this;
 	}
 	
-	public function qdt($cached = false)
+	public function request($cached = false)
 	{
 		$this->setCached($cached);
 		return $this;

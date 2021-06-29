@@ -36,7 +36,7 @@ class Chain extends Client
 	{
 		$count = 0;
 		$chains = [];
-		$chainsData = self::getClient()->qdt()->chains(['limit' => $name, 'page' => $page, 'count' => $pageSize]);
+		$chainsData = self::getClient()->chains(['limit' => $name, 'page' => $page, 'count' => $pageSize]);
 		if( ! $chainsData || ! isset($chainsData['data'])) return [];
 		usort($chainsData['data'], function($a, $b) {
 			return -($a['id'] <=> $b['id']);

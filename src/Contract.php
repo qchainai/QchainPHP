@@ -16,7 +16,7 @@ class Contract extends Client
 	public function pay($index = 0, $paymentsAlias = 'pay')
 	{
 		$payments = [];
-		$paymentsList = self::getClient()->qdt()->{$this->contractAlias}(['limit' => $paymentsAlias, 'index' => $index]);
+		$paymentsList = self::getClient()->request()->{$this->contractAlias}(['limit' => $paymentsAlias, 'index' => $index]);
 		if( ! empty($paymentsList)) {
 			foreach($paymentsList['payments'] AS $payment) {
 				$payments[($payment['payment'])] = new Payment($payment);
@@ -38,7 +38,7 @@ class Contract extends Client
 			$arguments[0]
 		);
 		
-		$nodeResponse = self::getClient()->qdt()->getData(
+		$nodeResponse = self::getClient()->request()->getData(
 			$this->contractAlias . '/' . $method,
 			$data
 		);

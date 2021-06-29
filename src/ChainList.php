@@ -28,7 +28,7 @@ class ChainList extends Client
 	public static function get()
 	{
 		$chains = [];
-		$chainList = self::getClient()->qdt()->chains();
+		$chainList = self::getClient()->chains();
 		foreach($chainList['chains'] AS $chain) {
 			foreach($chain AS $name=>$count)
 				$chains[] = new self($name, $count);

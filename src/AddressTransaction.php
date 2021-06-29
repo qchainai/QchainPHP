@@ -53,7 +53,7 @@ class AddressTransaction extends Client
 		$count = 0;
 		$transactions = [];
 		
-		$transactionsData = self::getClient()->qdt()->account(['limit' => $address['account'], 'type' => 'transactions', 'token' => $address['token'], 'count'=> $offset + $limit]);
+		$transactionsData = self::getClient()->account(['limit' => $address['account'], 'type' => 'transactions', 'token' => $address['token'], 'count'=> $offset + $limit]);
 		
 		if( ! isset($transactionsData['data'][0]['transactions'])) return [];
 		foreach($transactionsData['data'][0]['transactions'] AS $transaction) {
@@ -74,11 +74,11 @@ class AddressTransaction extends Client
 			'fees' => 0
 		];
 		
-		$latest = self::getClient()->qdt(false)->account(['limit' => $address['account'], 'type' => 'transactions', 'token' => $address['token'], 'count'=> 1]);
+		$latest = self::getClient()->request(false)->account(['limit' => $address['account'], 'type' => 'transactions', 'token' => $address['token'], 'count'=> 1]);
 		
 		if(isset($latest['data'][0]['transactions']) && ! empty($latest['data'][0]['transactions'])) {
 			$latestTxid = $latest['data'][0]['transactions'][0]['txid'];
-			$transactionsData = self::getClient()->qdt(true)->account(['limit' => $address['account'], 'type' => 'transactions', 'token' => $address['token'], 'count'=> '9999999', 'last' => $latestTxid]);
+			$transactionsData = self::getClient()->request(true)->account(['limit' => $address['account'], 'type' => 'transactions', 'token' => $address['token'], 'count'=> '9999999', 'last' => $latestTxid]);
 		}
 		
 		if( ! isset($transactionsData['data'][0]['transactions'])) return $data;
