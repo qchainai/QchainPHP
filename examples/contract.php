@@ -28,7 +28,7 @@ if($ret) {
 	echo 'Success';
 }
 
-// check payments
+// check payments updates
 
 $index = 0;
 

@@ -28,13 +28,13 @@ class Address extends Client
 	public static function findById($id, $token = null, $offset = 0, $limit = 0)
 	{
 		$accountsData = self::getClient()->account(['limit' => $id, 'type' => 'balance']);
-		return self::find($id, $accountsData, $token, $offset, $limit);
+		return self::find($id, $accountsData, $offset, $limit, $token);
 	}
 
 	public static function findByHash($hash, $token = null, $offset = 0, $limit = 0)
 	{
 		$accountsData = self::getClient()->account(['type' => 'balance']);
-		return self::find($hash, $accountsData, $token, $offset, $limit);
+		return self::find($hash, $accountsData, $offset, $limit, $token);
 	}
 	
 	protected static function find($accountIdentity, $accountsData, $offset = 0, $limit = 0, $token = null)
